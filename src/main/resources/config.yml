@@ -1,3 +1,15 @@
 options:
   prefix:
     "[Oxydia RP]"
+
+coordonnées:
+  reportlocation:
+    x:
+    y:
+    z:
+  closeinter:
+    x:
+    y:
+    z:
+valeurs:
+  inter:

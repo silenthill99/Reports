@@ -1,6 +1,6 @@
 package fr.silenthill99.reports.commands;
 
-import org.bukkit.Location;
+import fr.silenthill99.reports.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,18 +8,6 @@ import org.bukkit.entity.Player;
 
 public class SetReport implements CommandExecutor
 {
-    private Location location;
-
-    public SetReport(Location location)
-    {
-        this.location = location;
-    }
-
-    public SetReport()
-    {
-
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
@@ -30,17 +18,16 @@ public class SetReport implements CommandExecutor
         }
 
         Player player = (Player) sender;
-        Location loc = new SetReport(player.getLocation()).getLocation();
-        player.sendMessage("Spawn placé en " + player.getLocation().getX() + " " + player.getLocation().getY() + " " + player.getLocation().getZ());
+
+        float x = (float) player.getLocation().getX();
+        float y = (float) player.getLocation().getY();
+        float z = (float) player.getLocation().getZ();
+
+        Main.getInstance().getConfig().set("coordonnées.reportlocation.x", x);
+        Main.getInstance().getConfig().set("coordonnées.reportlocation.y", y);
+        Main.getInstance().getConfig().set("coordonnées.reportlocation.z", z);
+        player.sendMessage("Spawn placé en : x = " + String.format("%.2f", x) + ", y = " + String.format("%.2f", y) + ", z = " + String.format("%.2f", z));
 
         return false;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 }

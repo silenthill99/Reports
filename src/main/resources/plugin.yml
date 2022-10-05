@@ -6,3 +6,8 @@ authors: [ silenthill99 ]
 description: Plugin de report
 commands:
   setreport:
+  setclose:
+  report:
+  reportsend:
+  inter:
+    permission: group.modo-stagiaire
