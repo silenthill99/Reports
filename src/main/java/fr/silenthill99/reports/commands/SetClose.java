@@ -26,6 +26,7 @@ public class SetClose implements CommandExecutor
         Main.getInstance().getConfig().set("coordonnées.closeinter.y", y);
         Main.getInstance().getConfig().set("coordonnées.closeinter.z", z);
         player.sendMessage("Spawn placé en : x = " + String.format("%.2f", x) + ", y = " + String.format("%.2f", y) + ", z = " + String.format("%.2f", z));
+        Main.getInstance().saveConfig();
 
         return false;
     }

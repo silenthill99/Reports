@@ -59,6 +59,7 @@ public class Report implements CommandExecutor {
             {
                 int inter = Main.getInstance().getConfig().getInt("valeurs.inter") + 1;
                 Main.getInstance().getConfig().set("valeurs.inter", inter);
+                Main.getInstance().saveConfig();
 
                 Main.getInstance().plaignant.put(inter, player);
                 Main.getInstance().accuse.put(inter, target);
