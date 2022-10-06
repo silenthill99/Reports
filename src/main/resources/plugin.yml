@@ -6,7 +6,9 @@ authors: [ silenthill99 ]
 description: Plugin de report
 commands:
   setreport:
+    permission: oxydia.fondateur
   setclose:
+    permission: oxydia.fondateur
   report:
   reportsend:
     permission: group.modo-stagiaire
