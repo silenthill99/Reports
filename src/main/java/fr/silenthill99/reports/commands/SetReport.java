@@ -26,7 +26,7 @@ public class SetReport implements CommandExecutor
         Main.getInstance().getConfig().set("coordonnées.reportlocation.x", x);
         Main.getInstance().getConfig().set("coordonnées.reportlocation.y", y);
         Main.getInstance().getConfig().set("coordonnées.reportlocation.z", z);
-        player.sendMessage("Spawn placé en : x = " + String.format("%.2f", x) + ", y = " + String.format("%.2f", y) + ", z = " + String.format("%.2f", z));
+        player.sendMessage("Salle de report placé en : x = " + String.format("%.2f", x) + ", y = " + String.format("%.2f", y) + ", z = " + String.format("%.2f", z));
 
         return false;
     }
