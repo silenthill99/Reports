@@ -23,8 +23,6 @@ public final class Main extends JavaPlugin {
     public HashMap<Integer, StringBuilder> raison = new HashMap<>();
     public List<Integer> staff = new ArrayList<>();
 
-    public int inter = 0;
-
     @Override
     public void onEnable() {
         saveDefaultConfig();

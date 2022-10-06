@@ -53,21 +53,21 @@ public class Report implements CommandExecutor {
             }
         }
 
+        int inter = Main.getInstance().getConfig().getInt("valeurs.inter") + 1;
+        Main.getInstance().getConfig().set("valeurs.inter", inter);
+        Main.getInstance().saveConfig();
+        player.sendMessage(ChatColor.DARK_GREEN + "REPORT " + ChatColor.GREEN + "Votre signalement a été pris en compte | inter : " + inter);
+
         for (Player players : Bukkit.getOnlinePlayers())
         {
             if (players.hasPermission("group.modo-stagiaire"))
             {
-                int inter = Main.getInstance().getConfig().getInt("valeurs.inter") + 1;
-                Main.getInstance().getConfig().set("valeurs.inter", inter);
-                Main.getInstance().saveConfig();
 
                 Main.getInstance().plaignant.put(inter, player);
                 Main.getInstance().accuse.put(inter, target);
                 Main.getInstance().raison.put(inter, raison);
                 Main.getInstance().staff.add(inter);
-
-                player.sendMessage(ChatColor.DARK_GREEN + "REPORT " + ChatColor.GREEN + "Votre signalement a été pris en compte | inter : " + Main.getInstance().inter);
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "reportsend");
+                Bukkit.dispatchCommand(players, "reportsend");
             }
             else
             {

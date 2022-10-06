@@ -9,5 +9,6 @@ commands:
   setclose:
   report:
   reportsend:
+    permission: group.modo-stagiaire
   inter:
     permission: group.modo-stagiaire
