@@ -28,6 +28,7 @@ public class Inter implements CommandExecutor {
                 Main.getInstance().plaignant.get(Integer.valueOf(args[0])).teleport(new Location(player.getWorld(), x, y, z));
                 Main.getInstance().accuse.get(Integer.valueOf(args[0])).getPlayer().teleport(new Location(player.getWorld(), x, y, z));
                 player.teleport(new Location(player.getWorld(), x, y, z));
+                Main.getInstance().staff.remove(Integer.valueOf(args[0]));
 
             }
             else

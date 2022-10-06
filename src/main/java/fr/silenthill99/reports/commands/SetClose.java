@@ -22,9 +22,9 @@ public class SetClose implements CommandExecutor
         float y = (float) player.getLocation().getY();
         float z = (float) player.getLocation().getZ();
 
-        Main.getInstance().getConfig().get("coordonnées.closeinter.x", x);
-        Main.getInstance().getConfig().get("coordonnées.closeinter.y", y);
-        Main.getInstance().getConfig().get("coordonnées.closeinter.z", z);
+        Main.getInstance().getConfig().set("coordonnées.closeinter.x", x);
+        Main.getInstance().getConfig().set("coordonnées.closeinter.y", y);
+        Main.getInstance().getConfig().set("coordonnées.closeinter.z", z);
         player.sendMessage("Salle de report placé en : x = " + String.format("%.2f", x) + ", y = " + String.format("%.2f", y) + ", z = " + String.format("%.2f", z));
 
         return false;

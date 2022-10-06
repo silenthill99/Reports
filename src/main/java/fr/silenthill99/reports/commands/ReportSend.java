@@ -17,7 +17,7 @@ public class ReportSend implements CommandExecutor
             if (player.hasPermission("group.modo-stagiaire"))
             {
                 player.sendMessage("");
-                player.sendMessage(" §a☆━━━━━━━━Inter : " + Main.getInstance().getConfig().getInt("valeurs.inter") + "%━━━━━━━━━━━☆");
+                player.sendMessage(" §a☆━━━━━━━━Inter : " + Main.getInstance().getConfig().getInt("valeurs.inter") + "━━━━━━━━━━━☆");
                 player.sendMessage(" ");
                 player.sendMessage(" §aPlaignant : " + Main.getInstance().plaignant.get(Main.getInstance().getConfig().getInt("valeurs.inter")).getName());
                 player.sendMessage(" §aAccusé : " + Main.getInstance().accuse.get(Main.getInstance().getConfig().getInt("valeurs.inter")).getName());
