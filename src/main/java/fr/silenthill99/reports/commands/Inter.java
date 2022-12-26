@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Inter implements CommandExecutor {
+    Main main = Main.getInstance();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) return false;
@@ -18,17 +19,20 @@ public class Inter implements CommandExecutor {
             player.sendMessage("Erreur : Veuillez saisir l'identifiant d'un signalement !");
             return false;
         }
+
+        Player plaignant = main.plaignant.get(Integer.valueOf(args[0]));
+        Player accuse = (Player) main.accuse.get(Integer.valueOf(args[0]));
         if (args.length == 1)
         {
-            if (Main.getInstance().staff.contains(Integer.valueOf(args[0])))
+            if (main.staff.contains(Integer.valueOf(args[0])))
             {
-                float x = Main.getInstance().getConfig().getInt("coordonnées.reportlocation.x");
-                float y = Main.getInstance().getConfig().getInt("coordonnées.reportlocation.y");
-                float z = Main.getInstance().getConfig().getInt("coordonnées.reportlocation.z");
-                Main.getInstance().plaignant.get(Integer.valueOf(args[0])).teleport(new Location(player.getWorld(), x, y, z));
-                Main.getInstance().accuse.get(Integer.valueOf(args[0])).getPlayer().teleport(new Location(player.getWorld(), x, y, z));
+                float x = main.getConfig().getInt("coordonnées.reportlocation.x");
+                float y = main.getConfig().getInt("coordonnées.reportlocation.y");
+                float z = main.getConfig().getInt("coordonnées.reportlocation.z");
+                plaignant.teleport(new Location(player.getWorld(), x, y, z));
+                accuse.teleport(new Location(player.getWorld(), x, y, z));
                 player.teleport(new Location(player.getWorld(), x, y, z));
-                Main.getInstance().staff.remove(Integer.valueOf(args[0]));
+                main.staff.remove(Integer.valueOf(args[0]));
 
             }
             else
@@ -38,11 +42,11 @@ public class Inter implements CommandExecutor {
         }
         else if (args[1].equalsIgnoreCase("close"))
         {
-            float x = Main.getInstance().getConfig().getInt("coordonnées.closeinter.x");
-            float y = Main.getInstance().getConfig().getInt("coordonnées.closeinter.y");
-            float z = Main.getInstance().getConfig().getInt("coordonnées.closeinter.z");
-            Main.getInstance().plaignant.get(Integer.valueOf(args[0])).teleport(new Location(player.getWorld(), x, y, z));
-            Main.getInstance().accuse.get(Integer.valueOf(args[0])).getPlayer().teleport(new Location(player.getWorld(), x, y, z));
+            float x = main.getConfig().getInt("coordonnées.closeinter.x");
+            float y = main.getConfig().getInt("coordonnées.closeinter.y");
+            float z = main.getConfig().getInt("coordonnées.closeinter.z");
+            plaignant.teleport(new Location(player.getWorld(), x, y, z));
+            accuse.getPlayer().teleport(new Location(player.getWorld(), x, y, z));
 
         }
         return false;
