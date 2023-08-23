@@ -1,11 +1,15 @@
 package fr.silenthill99.reports.commands;
 
 import fr.silenthill99.reports.Main;
+import fr.silenthill99.reports.inventory.InventoryManager;
+import fr.silenthill99.reports.inventory.InventoryType;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Objects;
 
 public class Inter implements CommandExecutor {
     Main main = Main.getInstance();
@@ -26,14 +30,15 @@ public class Inter implements CommandExecutor {
         {
             if (main.staff.contains(Integer.valueOf(args[0])))
             {
+                /*
                 float x = main.getConfig().getInt("coordonnées.reportlocation.x");
                 float y = main.getConfig().getInt("coordonnées.reportlocation.y");
                 float z = main.getConfig().getInt("coordonnées.reportlocation.z");
                 plaignant.teleport(new Location(player.getWorld(), x, y, z));
                 accuse.teleport(new Location(player.getWorld(), x, y, z));
                 player.teleport(new Location(player.getWorld(), x, y, z));
-                main.staff.remove(Integer.valueOf(args[0]));
-
+                */
+                InventoryManager.openInventory(player, InventoryType.REPORTS, plaignant, accuse, Integer.valueOf(args[0]));
             }
             else
             {
@@ -42,11 +47,20 @@ public class Inter implements CommandExecutor {
         }
         else if (args[1].equalsIgnoreCase("close"))
         {
-            float x = main.getConfig().getInt("coordonnées.closeinter.x");
-            float y = main.getConfig().getInt("coordonnées.closeinter.y");
-            float z = main.getConfig().getInt("coordonnées.closeinter.z");
-            plaignant.teleport(new Location(player.getWorld(), x, y, z));
-            accuse.getPlayer().teleport(new Location(player.getWorld(), x, y, z));
+            for (int i = 1; i <= 4; i++)
+            {
+                if (main.getConfig().get("salle_" + i + ".staff_id") == player.getUniqueId())
+                {
+                    plaignant.teleport(Objects.requireNonNull(main.getConfig().getLocation("salle_" + i + ".plaignant_loc")));
+                    accuse.teleport(main.getConfig().getLocation("salle_" + i + ".accuse.loc"));
+                    main.getConfig().set("salle_" + i + ".staff_id", null);
+                }
+            }
+//            float x = main.getConfig().getInt("coordonnées.closeinter.x");
+//            float y = main.getConfig().getInt("coordonnées.closeinter.y");
+//            float z = main.getConfig().getInt("coordonnées.closeinter.z");
+//            plaignant.teleport(new Location(player.getWorld(), x, y, z));
+//            accuse.getPlayer().teleport(new Location(player.getWorld(), x, y, z));
 
         }
         return false;
