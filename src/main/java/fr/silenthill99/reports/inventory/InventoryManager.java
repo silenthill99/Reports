@@ -35,7 +35,7 @@ public class InventoryManager implements Listener
     @EventHandler
     public void onClick(InventoryClickEvent event)
     {
-        if (event.getClickedInventory() != null || !(event.getWhoClicked() instanceof Player))
+        if (event.getClickedInventory() == null || !(event.getWhoClicked() instanceof Player))
             return;
         Player player = (Player) event.getWhoClicked();
         InventoryHolder holder = event.getClickedInventory().getHolder();

@@ -56,6 +56,7 @@ public class Inter implements CommandExecutor {
                     main.getConfig().set("salle_" + i + ".staff_id", null);
                 }
             }
+            main.saveConfig();
 //            float x = main.getConfig().getInt("coordonnées.closeinter.x");
 //            float y = main.getConfig().getInt("coordonnées.closeinter.y");
 //            float z = main.getConfig().getInt("coordonnées.closeinter.z");

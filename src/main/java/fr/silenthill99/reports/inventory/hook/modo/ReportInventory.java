@@ -66,8 +66,6 @@ public class ReportInventory extends AbstractInventory<ReportHolder>
                 accuse.teleport(salle.getLoc());
 
                 main.staff.remove(inter);
-                main.saveConfig();
-
                 break;
             }
             case RED_WOOL:
